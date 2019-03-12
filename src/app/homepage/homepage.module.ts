@@ -10,13 +10,15 @@ import { DiscountComponent } from './discount/discount.component';
 import { DiscountItemComponent } from './discount-item/discount-item.component';
 import { InformationComponent } from './information/information.component';
 import { FooterComponent } from './footer/footer.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [HeaderComponent, SliderComponent,  FilmListComponent, FilmComponent, DiscountComponent, DiscountItemComponent , InformationComponent, FooterComponent],
   imports: [
     CommonModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    NgxPaginationModule
   ],
   exports:[
     HeaderComponent,
