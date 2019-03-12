@@ -1,0 +1,100 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <form #formDangKy="ngForm" (ngSubmit)="DangKy(formDangKy.value)">
+        <h4 class="text-center">ĐĂNG KÝ</h4>
+        <div class="col-12 form-group">
+           <input placeholder="Họ tên" type="text" class=" form-control" #hoTen="ngModel" name="HoTen" required [pattern]='"^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêếìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ" +
+           "ẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ" +
+           "ụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s]+$"' ngModel />
+          <div *ngIf="hoTen.errors && (hoTen.touched || hoTen.dirty)">
+           <!-- Kiểm tra rỗng -->
+            <div class="alert alert-danger" *ngIf="hoTen.errors.required">
+              Vui lòng nhập vào họ tên
+            </div>
+            <!-- Kiểm tra lỗi pattern-->
+            <div class="alert alert-danger" *ngIf="hoTen.errors.pattern">
+              Họ tên phải là chữ
+            </div>
+          </div>
+        </div>
+        <div class="col-12 form-group">
+          <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <input placeholder="Số điện thoại" type="text" class=" form-control" #soDT="ngModel" name="SoDT" ngModel/>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <select class="form-control" name="GioiTinh" [(ngModel)]="gioiTinh">
+                <option value="0" selected>Chọn giới tính</option>
+                <option value="1">Nam</option>
+                <option value="2">Nữ</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 form-group">
+          <input placeholder="Email" type="email" [pattern]='"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+          + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"' required class=" form-control" #email="ngModel" name="Email" ngModel/>
+          <div *ngIf="email.errors && (email.touched || email.dirty)">
+            <!-- Kiểm tra rỗng -->
+            <div class="alert alert-danger" *ngIf="email.errors.required">
+              Vui lòng nhập email
+            </div>
+            <!-- Kiểm tra email hợp lệ -->
+            <div class="alert alert-danger" *ngIf="email.errors.pattern">
+              Email nhập vào chưa đúng
+            </div>
+          </div>
+        </div>
+        <div class="col-12 form-group">
+          <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <input placeholder="Mật Khẩu" type="password" class=" form-control" #matKhau="ngModel" minlength="10" maxlength="20" required name="MatKhau" ngModel/>
+              
+              <div *ngIf="matKhau.errors && (matKhau.touched || matKhau.dirty)">
+                <!-- Kiểm tra rỗng -->
+                <div class="alert alert-danger" *ngIf="matKhau.errors.required">
+                  Vui lòng nhập mật khẩu
+                </div>
+                <!-- Kiểm tra minlength và maxlength -->
+                <div class="alert alert-danger" *ngIf="matKhau.errors.minlength || matKhau.errors.maxlength">
+                  Mật khẩu phải có từ 10 tới 20 ký tự
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <input placeholder="Nhập Lại Mật Khẩu" type="password" [pattern]="matKhau.value" class=" form-control" #repeatPass="ngModel" name="RepeatPass" ngModel/>
+              <!-- Kiểm tra khớp password -->
+              <div *ngIf="repeatPass.errors && (repeatPass.touched || repeatPass.dirty)">
+                <div class="alert alert-danger" *ngIf="repeatPass.errors.pattern">
+                  Vui lòng nhập đúng password
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 form-group">
+          <input placeholder="Địa chỉ" type="text" required class=" form-control" #address="ngModel" name="Address" ngModel/>
+          <div *ngIf="address.errors && (address.touched || address.dirty)">
+            <!-- Kiểm tra rỗng -->
+            <div class="alert alert-danger" *ngIf="address.errors.required">
+              Vui lòng nhập địa chỉ của bạn
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <p class="text-confirm-signup">
+            Tôi đã đọc và đồng ý với
+            <a href="https://www.galaxycine.vn/chinh-sach">
+              <b> Chính sách </b>
+            </a>
+            của chương trình.
+          </p>
+        </div>
+        <div class="col-12 form-group">
+          <button class="btn btn-success form-control" [disabled]="formDangKy.invalid" type="submit">Đăng Ký</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
