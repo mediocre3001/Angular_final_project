@@ -11,9 +11,10 @@ import { DiscountItemComponent } from './discount-item/discount-item.component';
 import { InformationComponent } from './information/information.component';
 import { FooterComponent } from './footer/footer.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { MainHomepageComponent } from './main-homepage/main-homepage.component';
 
 @NgModule({
-  declarations: [HeaderComponent, SliderComponent,  FilmListComponent, FilmComponent, DiscountComponent, DiscountItemComponent , InformationComponent, FooterComponent],
+  declarations: [HeaderComponent, SliderComponent,  FilmListComponent, FilmComponent, DiscountComponent, DiscountItemComponent , InformationComponent, FooterComponent, MainHomepageComponent],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -27,7 +28,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FilmComponent,
     DiscountComponent,
     InformationComponent,
-    FooterComponent
+    FooterComponent,
+    MainHomepageComponent
   ]
 })
 export class HomepageModule { }
